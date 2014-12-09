@@ -9,9 +9,9 @@
                 div.bar {
                     display: inline-block;
                     width: 20px;
-                    height: 75px;
+                    height: 75px;   /* Gets overriden by D3-assigned height below */
                     background-color: teal;
-                }     
+                }    
             </style>
     </head>
     
@@ -23,7 +23,11 @@
                 .data(dataset)
                 .enter()
                 .append("div")
-                .attr("class", "bar");
+                .attr("class", "bar")
+                .style("height", function(d) {
+                    return d + "px";
+                });
+            
         </script>
     </body>
 </html>  
