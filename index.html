@@ -11,6 +11,7 @@
                     width: 20px;
                     height: 75px;   /* Gets overriden by D3-assigned height below */
                     background-color: teal;
+                    margin-right: 2px;
                 }    
             </style>
     </head>
@@ -25,7 +26,8 @@
                 .append("div")
                 .attr("class", "bar")
                 .style("height", function(d) {
-                    return d + "px";
+                    var barHeight = d * 5;  //Scale up by factor of 5
+                    return barHeight + "px";
                 });
             
         </script>
