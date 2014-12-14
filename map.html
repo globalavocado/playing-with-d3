@@ -2,7 +2,10 @@
 	<meta charset="utf-8">
 	<style>
 
-	/* CSS goes here. */
+	.countries.Nigeria { fill: #cdd; }
+	.countries.Liberia { fill: blue; }
+	.countries.Guinea { fill: orange; }
+	.countries.SierraLeone { fill: #ccd; }
 
 	</style>
 	<body>
@@ -10,20 +13,6 @@
 	<script src="js/d3.v3.js"></script>
 	<script src="js/topojson.v1.min.js"></script>
 		<script>
-
-			// var width = 960,
-   // 				height = 1160;
-
-			// var svg = d3.select("body").append("svg")
-			//     .attr("width", width)
-			//     .attr("height", height);
-						
-			// d3.json("data/world.json", function(error, world) {
-			//   if (error) return console.error(error);
-			//   svg.append("path")
-			//       .datum(topojson.feature(world, world.objects.countries))
-			//       .attr("d", d3.geo.path().projection(d3.geo.mercator()));
-			// });
 
 			var width = 1200,
 			    height = 800;
@@ -40,9 +29,11 @@
 			    .attr("height", height);
 
 			d3.json("data/world.json", function(error, world) {
-			  svg.append("path")
-			      .datum(topojson.feature(world, world.objects.countries))
-			      .attr("d", path);
+			  svg.selectAll(".countries")
+			   		.data(topojson.feature(world, world.objects.countries).features)
+			   		.enter().append("path")
+			      	.attr("class", function(d) { return "countries " + d.properties.name; })
+			      	.attr("d", path);
 			});
 
 
