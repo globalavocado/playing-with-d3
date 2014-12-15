@@ -2,23 +2,31 @@
 	<meta charset="utf-8">
 	<style>
 
-	.countries.Nigeria { fill: #cdd; }
-	.countries.Liberia { fill: blue; }
-	.countries.Guinea { fill: orange; }
-	.countries.SierraLeone { fill: #ccd; }
+	.countries.Nigeria { fill: orange; }
+	.countries.Liberia { fill: yellow; }
+	.countries.Guinea { fill: blue; }
+	.countries.SierraLeone { fill: magenta; }
+
+	.countries-boundary {
+	  fill: none;
+	  stroke: #777;
+	  stroke-dasharray: 2,2;
+	  stroke-linejoin: round;
+	}
 
 	</style>
 	<body>
-	
 	<script src="js/d3.v3.js"></script>
 	<script src="js/topojson.v1.min.js"></script>
 		<script>
 
-			var width = 1200,
-			    height = 800;
+			var width = 1100,
+			    height = 700;
 
 			var projection = d3.geo.mercator()
-			    .scale(180)
+				.center([-20, 10])
+				.rotate([4.4, 0])
+			    .scale(300)
 			    .translate([width / 2, height / 2]);
 
 			var path = d3.geo.path()
@@ -34,6 +42,12 @@
 			   		.enter().append("path")
 			      	.attr("class", function(d) { return "countries " + d.properties.name; })
 			      	.attr("d", path);
+
+			svg.append("path")
+		      .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b }))
+		      .attr("d", path)
+		      .attr("class", "countries-boundary");
+
 			});
 
 
