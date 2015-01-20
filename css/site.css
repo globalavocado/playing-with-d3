@@ -1,0 +1,46 @@
+/* set the CSS */
+
+	body { 
+		font: 12px Arial;
+	}
+
+	#graph{
+		 padding-top: 10px;
+		}
+	
+	/* "path" without a dot in front, otherwise the graph will not render correctly! */
+
+	path { 
+	    stroke: steelblue;
+	    stroke-width: 2;
+	    fill: none;
+	}
+
+	.axis path,
+	.axis line {
+	    fill: none; 
+	    stroke: grey;
+	    stroke-width: 1;
+	    shape-rendering: crispEdges;
+	}
+
+	#barchart{
+			padding-left: 40px;
+			padding-top: 130px;
+		}
+
+	#map
+		{
+			padding-left: 20px;
+		}
+
+	.countries-boundary { fill: none;
+						  stroke: #444;
+						  stroke-dasharray: 2,2;
+						  stroke-linejoin: round; }
+	.countries.Nigeria { fill: orange; }
+	.countries.Liberia { fill: yellow; }
+	.countries.Guinea { fill: blue; }
+	.countries.SierraLeone { fill: magenta; }
+
+	
